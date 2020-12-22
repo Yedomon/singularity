@@ -338,3 +338,185 @@ sudo cpanm --force Bio::Perl # force failed installation module
 
 ```
 
+
+
+####### SO now I WANT TO INSTALL some other images for the second annotation pipeline including PASA, GeneMarkHMM, FGENESH, Augustus, and SNAP, GlimmerHMM  GeneWise EVM
+
+
+[PASA tuto 3 octobre 2020](http://kazumaxneo.hatenablog.com/entry/2020/10/03/144141)   [turo pasa](https://www.cnblogs.com/zhanmaomao/p/12456073.html)
+
+
+
+```
+cd /home/kplee/program/pasa
+
+singularity pull docker://quay.io/biocontainers/pasa:2.4.1--he1b5a44_0
+
+```
+
+
+log file
+
+```
+INFO:    Converting OCI blobs to SIF format
+INFO:    Starting build...
+Getting image source signatures
+Copying blob a3ed95caeb02 done
+Copying blob b0dc45cd432d done
+Copying blob 9466b3513669 done
+Copying blob ddd482ea7b54 done
+Copying blob 4d69f833b9d8 done
+Copying blob e7c454e5167d done
+Copying blob e38092b005c0 done
+Copying blob a3ed95caeb02 skipped: already exists
+Copying blob a3ed95caeb02 skipped: already exists
+Copying blob f879b42dfe2b done
+Copying blob a3ed95caeb02 skipped: already exists
+Copying blob 30194d518e49 done
+Copying config e3fe1b11c0 done
+Writing manifest to image destination
+Storing signatures
+2020/12/23 00:38:09  info unpack layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
+2020/12/23 00:38:09  info unpack layer: sha256:b0dc45cd432d14fb6df7d3239dc15d09c63906f8e7bfd373a4647b107fc3746c
+2020/12/23 00:38:09  warn rootless{dev/console} creating empty file in place of device 5:1
+2020/12/23 00:38:09  info unpack layer: sha256:9466b3513669459396338a74673ede0166f534ab64923f66ecca58176d1ffe5e
+2020/12/23 00:38:09  info unpack layer: sha256:ddd482ea7b54727ff2b6748188290b75f6441ba4091d15a5e62d2a0ed47c81dd
+2020/12/23 00:38:09  info unpack layer: sha256:4d69f833b9d8db2f02cc784f9bab7317317e4062129cafe65660c9eb2cd1c115
+2020/12/23 00:38:09  info unpack layer: sha256:e7c454e5167ddab5101c53d104c90c0a037c3ee3930b9a74a14da40c852134cc
+2020/12/23 00:38:09  info unpack layer: sha256:e38092b005c08dab4ae80615d29944107dc3d07307e37c4558914998e0e61827
+2020/12/23 00:38:09  info unpack layer: sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4
+2020/12/23 00:38:09  info unpack layer: sha256:f879b42dfe2b253544b0dc6834eff097a2a994cecda76b3c2950465fef9bfdfc
+2020/12/23 00:38:09  info unpack layer: sha256:30194d518e4994c6b155e452a6a4d2a362ddecc40c2c4f24efb06e6def3e0de6
+INFO:    Creating SIF file...
+
+```
+
+ls #check the presence of the image
+
+
+got
+
+
+```
+pasa_2.4.1--he1b5a44_0.sif
+
+```
+
+
+######  EVM Tool
+
+
+
+cd /home/kplee/program/EVM
+
+singularity pull docker://quay.io/biocontainers/evidencemodeler:1.1.1--2
+
+log
+
+```
+INFO:    Converting OCI blobs to SIF format
+INFO:    Starting build...
+Getting image source signatures
+Copying blob 1dbcab28ce46 done
+Copying blob cfb1ba34637d done
+Copying blob ace2d8a63dd5 done
+Copying blob 75c080ef15eb done
+Copying blob 316957f8baaf done
+Copying blob dbd31e1d863d done
+Copying blob 2f8531d5a6ec done
+Copying blob 1dbcab28ce46 skipped: already exists
+Copying blob 2e178fd72baf done
+Copying blob fd59fdaa7753 done
+Copying config dff695e838 done
+Writing manifest to image destination
+Storing signatures
+2020/12/23 01:05:13  info unpack layer: sha256:1dbcab28ce46b65c0174e5e82658492107396fead31e9144c343e6bc96e471c7
+2020/12/23 01:05:13  info unpack layer: sha256:cfb1ba34637d96787f6e780192bc5f09c04fe0b40c4e1acdcbc88953bce25b5b
+2020/12/23 01:05:13  warn rootless{dev/console} creating empty file in place of device 5:1
+2020/12/23 01:05:13  info unpack layer: sha256:ace2d8a63dd59063206661355f22da9e1c75c56d6cae5116d91db7a65f640667
+2020/12/23 01:05:13  info unpack layer: sha256:75c080ef15ebb28daeadc91eeda0ca95a893fe1f4e55845da3feb58069d42fdc
+2020/12/23 01:05:13  info unpack layer: sha256:316957f8baafcefd4c9f72b7e3f3fafb7fcb3ca805dc69d242aef656e0736490
+2020/12/23 01:05:13  info unpack layer: sha256:dbd31e1d863d4a41565c08ad1d419c3a3538abfdd4a7971de63b8c5c8a43caec
+2020/12/23 01:05:13  info unpack layer: sha256:2f8531d5a6ece34772cf99a2d30e3057c636f1ad05cdec0c8009eab401e616a7
+2020/12/23 01:05:13  info unpack layer: sha256:1dbcab28ce46b65c0174e5e82658492107396fead31e9144c343e6bc96e471c7
+2020/12/23 01:05:13  info unpack layer: sha256:2e178fd72baf28bc587b5d274574f1a3d3e25ac802fdaf154af258a3c5891831
+2020/12/23 01:05:13  info unpack layer: sha256:fd59fdaa7753c713e42c24f11e061867f8bb0f2d1778bbb9bef208f8cdc13f4a
+INFO:    Creating SIF file...
+
+
+
+
+```
+
+singularity exec ./evidencemodeler_1.1.1--2.sif evidence_modeler.pl --help
+
+
+```
+
+
+
+log
+
+
+
+```
+
+WARNING: Skipping mount /usr/local/var/singularity/mnt/session/etc/resolv.conf [files]: /etc/resolv.conf doesn't exist in container
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = (unset),
+        LANG = "en_US.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+
+################# Evidence Modeler ##############################
+#
+#  parameters:
+#
+#  Required:
+#
+#  --genome              genome sequence in fasta format
+#  --weights              weights for evidence types file
+#  --gene_predictions     gene predictions gff3 file
+#
+#  Optional but recommended:
+#  --protein_alignments   protein alignments gff3 file
+#  --transcript_alignments       transcript alignments gff3 file
+#
+#  Optional and miscellaneous
+#
+#  --repeats               gff3 file with repeats masked from genome file
+#
+#
+#  --terminalExons         supplementary file of additional terminal exons to consider (from PASA long-orfs)
+#
+#  --stop_codons             list of stop codons (default: TAA,TGA,TAG)
+#                               *for Tetrahymena, set --stop_codons TGA
+#  --min_intron_length       minimum length for an intron (default 20 bp)
+#  --exec_dir                directory that EVM cd's to before running.
+#
+# flags:
+#
+#  --forwardStrandOnly   runs only on the forward strand
+#  --reverseStrandOnly   runs only on the reverse strand
+#
+#  -S                    verbose flag
+#  --debug               debug mode, writes lots of extra files.
+#  --report_ELM          report the eliminated EVM preds too.
+#
+#  --search_long_introns  <int>  when set, reexamines long introns (can find nested genes, but also can result in FPs) (default: 0 (off))
+#
+#
+#  --re_search_intergenic <int>  when set, reexamines intergenic regions of minimum length (can add FPs) (default: 0  (off))
+#  --terminal_intergenic_re_search <int>   reexamines genomic regions outside of the span of all predicted genes (default: 10000)
+#
+#################################################################################################################################
+
+
+
+```
+
+
+
+

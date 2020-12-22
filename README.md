@@ -73,3 +73,64 @@ echo ". /home/kplee/program/singularity/builddir/etc/bash_completion.d/singulari
 
 
 ```
+
+
+
+##### Now installation and running of RepeatModeler and Repeat Masker
+
+#####---https://github.com/Dfam-consortium/TETools for running instruction using singularity
+
+
+```
+
+$ curl -sSLO https://github.com/Dfam-consortium/TETools/raw/master/dfam-tetools.sh
+$ chmod +x dfam-tetools.sh
+$ ./dfam-tetools.sh
+
+```
+
+WAIT FOR THE SIF FILE CREATION THEN RUN
+
+
+```
+BuildDatabase --help
+
+RepeatModeler --help
+
+RepeatMasker --help
+
+runcoseg.pl --help
+
+```
+Should work
+
+try to use this code for your run
+
+
+
+```
+
+
+
+$ BuildDatabase -name genome1 genome1.fa
+$ RepeatModeler -database genome1 [-LTRStruct] [-pa 8]
+
+$ RepeatMasker genome1.fa [-lib library.fa] [-pa 8]
+
+$ runcoseg.pl -d -m 50 -c ALU.cons -s ALU.seqs -i ALU.ins
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+

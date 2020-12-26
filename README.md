@@ -313,7 +313,7 @@ Options:
      -version            Prints the MAKER version.
 
      -help|?             Prints this usage statement.
-```
+
 
 
 
@@ -335,23 +335,20 @@ sudo cpanm Bio::Perl # to install bioperl tools
 
 sudo cpanm --force Bio::Perl # force failed installation module
 
-
 ```
-
-
-
 
 
 
 ### Try to generate control files
 
-
-
+```
 singularity exec ./maker_2.31.10--pl526h61907ee_17.sif maker -CTL
-
+```
 
 
 got the control files
+
+
 
 
 
@@ -365,8 +362,10 @@ total 884144
 -rw-rw-r--. 1 kplee kplee      4458 Dec 27 00:30 maker_opts.ctl
 
 
-
 ```
+
+
+
 
 
 

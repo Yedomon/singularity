@@ -340,6 +340,39 @@ sudo cpanm --force Bio::Perl # force failed installation module
 
 
 
+
+
+
+### Try to generate control files
+
+
+
+singularity exec ./maker_2.31.10--pl526h61907ee_17.sif maker -CTL
+
+
+
+got the control files
+
+
+
+```
+
+[kplee@localhost maker]$ ll
+total 884144
+-rwxrwxr-x. 1 kplee kplee 905347072 Dec 22 23:14 maker_2.31.10--pl526h61907ee_17.sif
+-rw-rw-r--. 1 kplee kplee      1413 Dec 27 00:30 maker_bopts.ctl
+-rw-rw-r--. 1 kplee kplee      1214 Dec 27 00:30 maker_exe.ctl
+-rw-rw-r--. 1 kplee kplee      4458 Dec 27 00:30 maker_opts.ctl
+
+
+
+```
+
+
+
+
+
+
 ####### SO now I WANT TO INSTALL some other images for the second annotation pipeline including PASA, GeneMarkHMM, FGENESH, Augustus, and SNAP, GlimmerHMM  GeneWise EVM
 
 

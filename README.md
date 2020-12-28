@@ -366,6 +366,39 @@ total 884144
 
 
 
+Test with real datasets
+
+```
+cd /home/kplee/analysis/0002_mr4003_maker_annotation
+
+singularity exec /home/kplee/program/maker/maker_2.31.10--pl526h61907ee_17.sif maker -CTL
+
+/home/kplee/analysis/0001_mr4003_repeat_analysis/sesamiMR4003.contigs.fasta.masked
+
+/home/kplee/datafiles/003_fos.MR4003.configs/original/transcripts.fa
+
+/home/kplee/datafiles/003_fos.MR4003.configs/original/lyc.fasta
+
+
+singularity exec /home/kplee/program/maker/maker_2.31.10--pl526h61907ee_17.sif maker -cpus 20 -base mr4003_rnd1 round1_maker_opts.ctl maker_bopts.ctl maker_exe.ctl
+
+
+```
+
+
+got this 
+
+
+
+```
+Possible precedence issue with control flow operator at /usr/local/lib/site_perl/5.26.2/Bio/DB/IndexedBase.pm line 805.
+STATUS: Parsing control files...
+df: Warning: cannot read table of mounted file systems: No such file or directory
+ERROR: Could not determine if RepBase is installed
+--> rank=NA, hostname=localhost.localdomain
+
+
+```
 
 
 

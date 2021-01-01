@@ -1266,8 +1266,74 @@ Fantabulous! Work well!Intruction for installation came from [here](https://gith
 
 
 
+### GlimmerHMM installation
+
+I went [here](https://ccb.jhu.edu/software/glimmerhmm/)
+
+
+Then
+
+
+```
+wget https://ccb.jhu.edu/software/glimmerhmm/dl/GlimmerHMM-3.0.4.tar.gz
+
+tar tar -xzf GlimmerHMM-3.0.4.tar.gz
+
+```
+
+check in the bin
+
+
+./glimmerhmm_linux_x86_64
+
+
+got this
+
+
+```
+USAGE:  ./glimmerhmm_linux_x86_64 <genome1-file> <training-dir-for-genome1> [options]
+Options:
+-p file_name     If protein domain searches are available, read them from file file_name
+-d dir_name      Training directory is specified by dir_name (introduced for compatibility with earlier versions)
+-o file_name     Print output in file_name; if n>1 for top best predictions, output is in file_name.1, file_name.2, ... , file_name.n f
+-n n             Print top n best predictions
+-g               Print output in gff format
+-v               Don't use svm splice site predictions
+-f               Don't make partial gene predictions
+-h               Display the options of the program
+
+```
+
+test `./glimmhmm.pl`
+
+```
+./glimmhmm.pl
+```
+
+get this
+
+```
+Usage: glimmhmm.pl <glimmerhmm_program> <fasta_file> <train_dir> <options>
+```
 
 
 
+Work fine!
 
 
+### SNAP installation
+
+
+
+```
+wget https://github.com/KorfLab/SNAP/archive/master.zip
+
+unzip SNAP-master
+
+make
+
+./hmm-assembler.pl #create hmm profile
+
+./snap [options] <HMM file> <FASTA file> [options] # run SNAP
+
+```

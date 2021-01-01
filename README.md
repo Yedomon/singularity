@@ -1337,3 +1337,19 @@ make
 ./snap [options] <HMM file> <FASTA file> [options] # run SNAP
 
 ```
+
+
+
+#### Install EVM
+
+
+```
+
+wget https://github.com/EVidenceModeler/EVidenceModeler/archive/v1.1.1.tar.gz
+
+tar -xzvf v1.1.1.tar.gz
+
+```
+
+
+[EVM resource link](https://evidencemodeler.github.io/#Obtaining_EVM)

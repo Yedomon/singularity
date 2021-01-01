@@ -1399,5 +1399,5 @@ I think I need to set MySQL first the
 [augustus](https://iamphioxus.org/2017/05/08/installing-augustus-with-manual-bamtools-installation/)
 
 
-
+awesome tuto [go analysis](https://www.cnblogs.com/zhanmaomao/p/11529589.html) | [go analysis](https://www.programmersought.com/article/12434648867/)
 

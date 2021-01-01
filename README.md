@@ -1369,4 +1369,34 @@ awesome tutorials [a](https://www.plob.org/article/7158.html)
 
 
 
+######## TUTO pasa [1](https://www.plob.org/article/7158.html)
+######## TUTO pasa [2](https://www.jianshu.com/p/d876a6d97625)
+
+I think I need to set MySQL first the 
+
+[github](https://github.com/PASApipeline/PASApipeline/wiki/setting-up-pasa-mysql)
+
+
+
+[genewise](http://www2.clst.riken.jp/phylo/genewise_installation.html)
+
+[genewise1](https://iamphioxus.org/2015/04/26/install-genewise-on-the-centosrhel-system/)
+
+[genewise2](http://avrilomics.blogspot.com/2012/11/installing-genewise-wise2.html)
+
+
+[pheatmap](https://www.plob.org/article/16698.html)
+
+
+
+[ka_ks](https://www.jianshu.com/p/6a179eef9cfe)
+
+
+
+[jvci](https://www.jianshu.com/p/a748d3a5421d)
+
+[augustus](https://iamphioxus.org/2017/05/08/installing-augustus-with-manual-bamtools-installation/)
+
+
+
 

@@ -1353,3 +1353,20 @@ tar -xzvf v1.1.1.tar.gz
 
 
 [EVM resource link](https://evidencemodeler.github.io/#Obtaining_EVM)
+
+
+
+
+#### Installation of PASA   
+
+
+
+[TUTO](https://www.jianshu.com/p/d876a6d97625)
+
+Just find awesome tutorials in genomics from Jianshu [1](https://www.jianshu.com/p/5842509e47f2) | [2](https://www.jianshu.com/p/a748d3a5421d) | [3](https://www.jianshu.com/p/ff781b0bb5e4) | [4](https://www.jianshu.com/p/7342451d82db) | [5](https://www.jianshu.com/p/9e8308b6a208) | [6](https://www.jianshu.com/p/ac8ebf0361cc) 
+
+awesome tutorials [a](https://www.plob.org/article/7158.html)
+
+
+
+

@@ -588,4 +588,562 @@ Le reste [ici](https://www.nature.com/articles/s42003-020-0770-2#Sec11)
 
 
 
+### GeneMark Installation
+
+I went [here](http://topaz.gatech.edu/GeneMark/license_download.cgi)
+
+I fill the form and getre-orientated for downloading Genemark suite and genemark key
+
+Now Installation in the server
+
+
+### Uncompression
+
+```
+gunzip gmes_linux_64.tar.gz
+
+tar -xvf gmes_linux_64.tar
+
+```
+
+### Check dependencies 
+
+```
+./check_install.bash
+
+```
+
+### Got this result
+
+```
+[kplee@localhost gmes_linux_64]$ ./check_install.bash
+Checking GeneMark-ES installation
+Can't locate Hash/Merge.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /
+BEGIN failed--compilation aborted.
+Error, Perl CPAN library Hash::Merge not found
+
+
+```
+
+So I need to install Hash/Merge missing dependencies
+
+
+I did like this
+
+
+```
+
+sudo cpanm Hash::Merge
+
+
+```
+
+
+
+got this log
+
+
+```
+
+[sudo] password for kplee:
+--> Working on Hash::Merge
+Fetching http://www.cpan.org/authors/id/H/HE/HERMES/Hash-Merge-0.302.tar.gz ... OK
+Configuring Hash-Merge-0.302 ... OK
+==> Found dependencies: Clone::Choose
+--> Working on Clone::Choose
+Fetching http://www.cpan.org/authors/id/H/HE/HERMES/Clone-Choose-0.010.tar.gz ... OK
+Configuring Clone-Choose-0.010 ... OK
+==> Found dependencies: Test::Without::Module
+--> Working on Test::Without::Module
+Fetching http://www.cpan.org/authors/id/C/CO/CORION/Test-Without-Module-0.20.tar.gz ... OK
+Configuring Test-Without-Module-0.20 ... OK
+Building and testing Test-Without-Module-0.20 ... OK
+Successfully installed Test-Without-Module-0.20
+Building and testing Clone-Choose-0.010 ... OK
+Successfully installed Clone-Choose-0.010
+Building and testing Hash-Merge-0.302 ... OK
+Successfully installed Hash-Merge-0.302
+3 distributions installed
+
+```
+
+
+### Test again
+
+
+```
+
+./check_install.bash
+
+
+```
+
+
+
+Got this
+
+
+```
+
+
+Checking GeneMark-ES installation
+Can't locate Logger/Simple.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .).
+BEGIN failed--compilation aborted.
+Error, Perl CPAN library Logger::Simple not found
+
+
+```
+
+
+
+Try to solve this also
+
+
+```
+
+sudo cpanm Logger::Simple
+
+```
+
+
+
+Got this
+
+
+
+```
+
+[kplee@localhost gmes_linux_64]$ sudo cpanm Logger::Simple
+--> Working on Logger::Simple
+Fetching http://www.cpan.org/authors/id/T/TS/TSTANLEY/Logger-Simple-2.0.tar.gz ... OK
+Configuring Logger-Simple-2.0 ... OK
+==> Found dependencies: Test::Pod, Object::InsideOut
+--> Working on Test::Pod
+Fetching http://www.cpan.org/authors/id/E/ET/ETHER/Test-Pod-1.52.tar.gz ... OK
+Configuring Test-Pod-1.52 ... OK
+Building and testing Test-Pod-1.52 ... OK
+Successfully installed Test-Pod-1.52
+--> Working on Object::InsideOut
+Fetching http://www.cpan.org/authors/id/J/JD/JDHEDDEN/Object-InsideOut-4.05.tar.gz ... OK
+Configuring Object-InsideOut-4.05 ... OK
+Building and testing Object-InsideOut-4.05 ... OK
+Successfully installed Object-InsideOut-4.05
+Building and testing Logger-Simple-2.0 ... OK
+Successfully installed Logger-Simple-2.0
+3 distributions installed
+
+
+
+```
+
+check again
+
+
+```
+
+./check_install.bash
+
+```
+
+
+got this
+
+
+```
+Checking GeneMark-ES installation
+Can't locate Parallel/ForkManager.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .).
+BEGIN failed--compilation aborted.
+Error, Perl CPAN library Parallel::ForkManager not found
+
+
+```
+
+
+Try to solve this by runining
+
+
+```
+
+sudo cpanm Parallel::ForkManager
+
+```
+
+
+got this
+
+
+```
+
+
+[kplee@localhost gmes_linux_64]$ sudo cpanm Parallel::ForkManager
+--> Working on Parallel::ForkManager
+Fetching http://www.cpan.org/authors/id/Y/YA/YANICK/Parallel-ForkManager-2.02.tar.gz ... OK
+Configuring Parallel-ForkManager-2.02 ... OK
+==> Found dependencies: Moo::Role, Moo
+--> Working on Moo::Role
+Fetching http://www.cpan.org/authors/id/H/HA/HAARG/Moo-2.004004.tar.gz ... OK
+Configuring Moo-2.004004 ... OK
+==> Found dependencies: Role::Tiny, Sub::Defer, Sub::Quote, Class::Method::Modifiers
+--> Working on Role::Tiny
+Fetching http://www.cpan.org/authors/id/H/HA/HAARG/Role-Tiny-2.001004.tar.gz ... OK
+Configuring Role-Tiny-2.001004 ... OK
+Building and testing Role-Tiny-2.001004 ... OK
+Successfully installed Role-Tiny-2.001004
+--> Working on Sub::Defer
+Fetching http://www.cpan.org/authors/id/H/HA/HAARG/Sub-Quote-2.006006.tar.gz ... OK
+Configuring Sub-Quote-2.006006 ... OK
+Building and testing Sub-Quote-2.006006 ... OK
+Successfully installed Sub-Quote-2.006006
+--> Working on Class::Method::Modifiers
+Fetching http://www.cpan.org/authors/id/E/ET/ETHER/Class-Method-Modifiers-2.13.tar.gz ... OK
+Configuring Class-Method-Modifiers-2.13 ... OK
+Building and testing Class-Method-Modifiers-2.13 ... OK
+Successfully installed Class-Method-Modifiers-2.13
+Building and testing Moo-2.004004 ... OK
+Successfully installed Moo-2.004004
+Building and testing Parallel-ForkManager-2.02 ... OK
+Successfully installed Parallel-ForkManager-2.02
+5 distributions installed
+
+
+```
+
+
+
+
+check
+
+
+
+```
+Checking GeneMark-ES installation
+Can't locate MCE/Mutex.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .).
+BEGIN failed--compilation aborted.
+Error, Perl CPAN library MCE::Mutex not found
+```
+
+
+
+solve
+
+
+```
+sudo cpanm MCE::Mutex
+
+```
+
+
+
+
+got this
+
+
+```
+--> Working on MCE::Mutex
+Fetching http://www.cpan.org/authors/id/M/MA/MARIOROY/MCE-1.874.tar.gz ... OK
+Configuring MCE-1.874 ... OK
+Building and testing MCE-1.874 ... OK
+Successfully installed MCE-1.874
+1 distribution installed
+
+
+```
+
+
+
+check 
+
+do the same thing for Math::Utils, 
+
+
+check again
+
+
+
+```
+[kplee@localhost gmes_linux_64]$ ./check_install.bash
+Checking GeneMark-ES installation
+GeneMark.hmm eukaryotic 3
+License key ".gm_key" not found.
+This file is neccessary in order to use GeneMark.hmm eukaryotic 3.
+Error, installation key is missing or expired
+
+
+```
+
+
+So I need to set the key
+
+
+
+```
+# extract the key file
+zcat gm_key_64.gz > ~/program/GeneMark/gmes_linux_64/.gm_key
+
+```
+
+
+check again
+
+```
+./check_install.bash
+
+```
+
+I got this 
+
+
+
+
+
+
+```
+Checking GeneMark-ES installation
+All required components for GeneMark-ES were found
+
+```
+
+
+So It is okay Now. GeneMark suite and dependencies are well installed.
+
+
+
+Let's check by runing a help command
+
+
+
+```
+./gmes_petap.pl
+
+```
+
+
+got this
+
+
+
+```
+
+# -------------------
+Usage:  ./gmes_petap.pl  [options]  --sequence [filename]
+
+GeneMark-ES Suite version 4.62_lic
+Suite includes GeneMark.hmm, GeneMark-ES, GeneMark-ET and GeneMark-EP algorithms.
+
+Input sequence/s should be in FASTA format.
+
+Select one of the gene prediction algorithm
+
+To run GeneMark-ES self-training algorithm
+  --ES
+
+To run GeneMark-ET with hints from transcriptome splice alignments
+  --ET           [filename]; file with intron coordinates from RNA-Seq read splice alignment in GFF format
+  --et_score     [number]; default 10; minimum score of intron in initiation of the ET algorithm
+
+To run GeneMark-EP with hints from protein splice alignments
+  --EP
+  --dbep         [filename]; file with protein database in FASTA format
+  --ep_score     [number,number]; default 4,0.25; minimum score of intron in initiation of the EP algorithm
+or
+  --EP           [filename]; file with intron coordinates from protein splice alignment in GFF format
+
+To run GeneMark.hmm predictions using previously derived model
+  --predict_with [filename]; file with species specific gene prediction parameters
+
+To run ES, ET or EP with branch point model. This option is most useful for fungal genomes
+  --fungus
+
+To run hmm, ES, ET or EP in PLUS mode (prediction with hints)
+  --evidence     [filename]; file with hints in GFF format
+
+Masking option
+  --soft_mask    [number] or [auto]; default auto; to indicate that lowercase letters stand for repeats;
+                 masks only lowercase repeats longer than specified length
+                 In 'auto' mode length is adjusted based on the size of the input genome
+
+Run options
+  --cores        [number]; default 1; to run program with multiple threads
+  --pbs          to run on cluster with PBS support
+  --v            verbose
+
+Optional sequence pre-processing parameters
+  --max_contig   [number]; default 5000000; will split input genomic sequence into contigs shorter then max_contig
+  --min_contig   [number]; default 50000 (10000 fungi); will ignore contigs shorter then min_contig in training
+  --max_gap      [number]; default 5000; will split sequence at gaps longer than max_gap
+                 Letters 'n' and 'N' are interpreted as standing within gaps
+  --max_mask     [number]; default 5000; will split sequence at repeats longer then max_mask
+                 Letters 'x' and 'X' are interpreted as results of hard masking of repeats
+
+Optinal algorithm parameters
+  --max_intron            [number]; default 10000 (3000 fungi); maximum length of intron
+  --max_intergenic        [number]; default 50000 (10000 fungi); maximum length of intergenic regions
+  --min_contig_in_predict [number]; default 500; minimum allowed length of contig in prediction step
+  --min_gene_in_predict   [number]; default 300 (120 fungi); minimum allowed gene length in prediction step
+  --gc_donor              [value];  default 0.001; transition probability to GC donor in the range 0..1; 'auto' mode detects probability from training; 'off' switches GC donor model OFF
+
+Developer options
+  --gc3          [number]; GC3 cutoff in training for grasses
+  --training     to run only training step of algorithms; applicable to ES, ET or EP
+  --prediction   to run only prediction step of algorithms using species parameters from previously executed training; applicable to ES, ET or EP
+  --usr_cfg      [filename]; use custom configuration from this file
+  --ini_mod      [filename]; use this file with parameters for algorithm initiation
+  --test_set     [filename]; to evaluate prediction accuracy on the given test set
+  --key_bin
+  --debug
+# -------------------
+
+
+
+```
+
+
+Awesome! Work fine! 
+
+Now set into the bin
+
+
+
+```
+# Go to home directory
+cd
+
+# pen the bash profie
+vi .bash_profile
+
+```
+
+
+Put the full path in the Path VARIABLE
+
+
+
+```
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/program/GeneMark/gmes_linux_64
+
+export PATH
+
+```
+
+
+press ESC + : + wq and then run
+
+
+
+```
+source .bash_profile
+
+```
+
+
+Test if it is working well
+
+
+```
+gmes_petap.pl
+```
+
+
+Got this result
+
+
+```
+
+# -------------------
+Usage:  /home/kplee/program/GeneMark/gmes_linux_64/gmes_petap.pl  [options]  --sequence [filename]
+
+GeneMark-ES Suite version 4.62_lic
+Suite includes GeneMark.hmm, GeneMark-ES, GeneMark-ET and GeneMark-EP algorithms.
+
+Input sequence/s should be in FASTA format.
+
+Select one of the gene prediction algorithm
+
+To run GeneMark-ES self-training algorithm
+  --ES
+
+To run GeneMark-ET with hints from transcriptome splice alignments
+  --ET           [filename]; file with intron coordinates from RNA-Seq read splice alignment in GFF format
+  --et_score     [number]; default 10; minimum score of intron in initiation of the ET algorithm
+
+To run GeneMark-EP with hints from protein splice alignments
+  --EP
+  --dbep         [filename]; file with protein database in FASTA format
+  --ep_score     [number,number]; default 4,0.25; minimum score of intron in initiation of the EP algorithm
+or
+  --EP           [filename]; file with intron coordinates from protein splice alignment in GFF format
+
+To run GeneMark.hmm predictions using previously derived model
+  --predict_with [filename]; file with species specific gene prediction parameters
+
+To run ES, ET or EP with branch point model. This option is most useful for fungal genomes
+  --fungus
+
+To run hmm, ES, ET or EP in PLUS mode (prediction with hints)
+  --evidence     [filename]; file with hints in GFF format
+
+Masking option
+  --soft_mask    [number] or [auto]; default auto; to indicate that lowercase letters stand for repeats;
+                 masks only lowercase repeats longer than specified length
+                 In 'auto' mode length is adjusted based on the size of the input genome
+
+Run options
+  --cores        [number]; default 1; to run program with multiple threads
+  --pbs          to run on cluster with PBS support
+  --v            verbose
+
+Optional sequence pre-processing parameters
+  --max_contig   [number]; default 5000000; will split input genomic sequence into contigs shorter then max_contig
+  --min_contig   [number]; default 50000 (10000 fungi); will ignore contigs shorter then min_contig in training
+  --max_gap      [number]; default 5000; will split sequence at gaps longer than max_gap
+                 Letters 'n' and 'N' are interpreted as standing within gaps
+  --max_mask     [number]; default 5000; will split sequence at repeats longer then max_mask
+                 Letters 'x' and 'X' are interpreted as results of hard masking of repeats
+
+Optinal algorithm parameters
+  --max_intron            [number]; default 10000 (3000 fungi); maximum length of intron
+  --max_intergenic        [number]; default 50000 (10000 fungi); maximum length of intergenic regions
+  --min_contig_in_predict [number]; default 500; minimum allowed length of contig in prediction step
+  --min_gene_in_predict   [number]; default 300 (120 fungi); minimum allowed gene length in prediction step
+  --gc_donor              [value];  default 0.001; transition probability to GC donor in the range 0..1; 'auto' mode detects probability from training; 'off' switches GC donor model OFF
+
+Developer options
+  --gc3          [number]; GC3 cutoff in training for grasses
+  --training     to run only training step of algorithms; applicable to ES, ET or EP
+  --prediction   to run only prediction step of algorithms using species parameters from previously executed training; applicable to ES, ET or EP
+  --usr_cfg      [filename]; use custom configuration from this file
+  --ini_mod      [filename]; use this file with parameters for algorithm initiation
+  --test_set     [filename]; to evaluate prediction accuracy on the given test set
+  --key_bin
+  --debug
+# -------------------
+
+
+```
+
+Fantabulous! Working very well!
+
+
+
+Notice, for the key management I used this [online ressource](https://eukcc.readthedocs.io/en/latest/install.html) as indication.
+
+
+
+
+Try to run an example with real dataset
+
+
+```
+gmes_petap.pl --cores 2 --sequence sesamiMR4003.contigs.fasta.masked --ES --fungus &> log &
+
+```
 

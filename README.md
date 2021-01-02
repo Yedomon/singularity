@@ -1890,9 +1890,19 @@ mysql> grant all privileges on `%_pasa`.* to 'pasa_write'@'localhost';
  
 > mysql> CREATE USER 'pasa'@'localhost' IDENTIFIED BY 'kpleeSESAME_270190';
 
+I think I need to create a database first
 
 
-[tuto](https://linuxize.com/post/how-to-create-mysql-user-accounts-and-grant-privileges/#:~:text=To%20create%20a%20new%20MySQL,user_password%20with%20the%20user%20password.)
+mysql -u root -p
+
+> mysql> CREATE DATABASE my_db_pasa;
+
+
+
+[tuto create database](https://linuxize.com/post/how-to-create-a-mysql-database/)
+
+
+[tuto setting](https://linuxize.com/post/how-to-create-mysql-user-accounts-and-grant-privileges/#:~:text=To%20create%20a%20new%20MySQL,user_password%20with%20the%20user%20password.)
 
 # set config file
 

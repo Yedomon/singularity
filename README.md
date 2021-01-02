@@ -1536,3 +1536,237 @@ All done!
 
 
 ```
+
+
+Connection to MySQL
+
+To log in to the MySQL server as the root user type:
+
+
+```
+mysql -u root -p
+
+```
+
+
+
+got this
+
+
+```
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+
+
+```
+
+
+
+I FOLLOWED THIS TUTO FOR THE [INSTALLATION](https://medium.com/@hbayraktar/how-to-install-mysql-on-centos-7-2c2dc0207fc1)
+
+
+
+Install mysql-connector
+
+
+```
+
+wget https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm # Download latest mysql80-community-release-el7 rpm
+
+sudo rpm -Uvh mysql80-community-release-el7-2.noarch.rpm # Install mysql80-community-release rpm
+
+sudo yum install mysql-connector-c++-devel # Install mysql-connector
+
+
+```
+
+
+
+Now let us install openssl
+
+
+Updating System Packages on CentOS
+
+```
+sudo yum update
+
+```
+
+check the version of OpenSSL installed
+
+
+
+```
+openssl version -a
+
+```
+
+
+got this
+
+
+```
+
+OpenSSL 1.0.2k-fips  26 Jan 2017
+built on: reproducible build, date unspecified
+platform: linux-x86_64
+options:  bn(64,64) md2(int) rc4(16x,int) des(idx,cisc,16,int) idea(int) blowfish(idx)
+compiler: gcc -I. -I.. -I../include  -fPIC -DOPENSSL_PIC -DZLIB -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DKRB5_MIT -m64 -DL_ENDIAN -Wall -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches   -m64 -mtune=generic -Wa,--noexecstack -DPURIFY -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_MONT5 -DOPENSSL_BN_ASM_GF2m -DRC4_ASM -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DAES_ASM -DVPAES_ASM -DBSAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DECP_NISTZ256_ASM
+OPENSSLDIR: "/etc/pki/tls"
+engines:  rdrand dynamic
+
+```
+
+
+
+
+Step 1: Install dependencies
+
+```
+sudo yum install perl-core zlib-devel -y
+
+```
+
+Step 2: Download OpenSSL
+
+
+```
+cd /usr/local/src/
+sudo wget https://www.openssl.org/source/openssl-1.1.1c.tar.gz
+sudo tar -xf openssl-1.1.1c.tar.gz
+cd openssl-1.1.1c
+
+```
+
+Step 3: Install OpenSSL
+
+
+```
+sudo ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib
+```
+
+
+got this
+
+
+```
+Operating system: x86_64-whatever-linux2
+Configuring OpenSSL version 1.1.1c (0x1010103fL) for linux-x86_64
+Using os-specific seed configuration
+Creating configdata.pm
+Creating Makefile
+
+**********************************************************************
+***                                                                ***
+***   OpenSSL has been successfully configured                     ***
+***                                                                ***
+***   If you encounter a problem while building, please open an    ***
+***   issue on GitHub <https://github.com/openssl/openssl/issues>  ***
+***   and include the output from the following command:           ***
+***                                                                ***
+***       perl configdata.pm --dump                                ***
+***                                                                ***
+***   (If you are new to OpenSSL, you might want to consult the    ***
+***   'Troubleshooting' section in the INSTALL file first)         ***
+***                                                                ***
+**********************************************************************
+
+```
+
+
+then
+
+
+```
+sudo make
+sudo make test
+sudo make install
+
+```
+
+
+Step 4: Configure OpenSSL Shared Libraries
+
+
+
+```
+cd /etc/ld.so.conf.d/
+sudo vi openssl-1.1.1c.conf
+
+#Ensure to save before you exit.
+
+#Next, reload the dynamic link by issuing the command below:
+
+sudo ldconfig -v
+
+```
+
+
+
+
+Step 5: Configure OpenSSL Binary
+
+
+```
+First, backup the default OpenSSL binary files.
+
+sudo mv /bin/openssl /bin/openssl.backup
+Next, create new environment files for OpenSSL:
+
+sudo nano /etc/profile.d/openssl.sh
+Enter the following:
+
+#Set OPENSSL_PATH
+OPENSSL_PATH="/usr/local/ssl/bin"
+export OPENSSL_PATH
+PATH=$PATH:$OPENSSL_PATH
+export PATH
+Ensure to save before you exit.
+
+Next, make the openssl.sh file executable by issuing the command below:
+
+sudo chmod +x /etc/profile.d/openssl.sh
+
+Next, reload the OpenSSL environment and check the PATH bin directory using commands below:
+
+source /etc/profile.d/openssl.sh
+echo $PATH
+
+
+We can now check and verify our installation of the latest stable version of OpenSSL using the command below:
+
+ which openssl
+ openssl version -a
+ 
+```
+
+
+And voila!   Inspirationnal tuto [here](https://cloudwafer.com/blog/installing-openssl-on-centos-7/)
+
+
+# Install perl DBD::mysql module
+
+```
+
+sudo yum install "perl(DBD::mysql)"  # tuto [here](https://metacpan.org/pod/distribution/DBD-mysql/lib/DBD/mysql/INSTALL.pod)
+
+```
+
+Now check that it works:
+
+```
+perl -MDBD::mysql -e 'print "Hello there!";'
+
+```

@@ -1399,3 +1399,140 @@ I think I need to set MySQL first the
 
 awesome tuto [go analysis](https://www.cnblogs.com/zhanmaomao/p/11529589.html) | [go analysis](https://www.programmersought.com/article/12434648867/)
 
+##### MySQL installation
+
+Enable the MySQL 8.0 repository:
+
+
+```
+sudo yum localinstall https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
+
+```
+
+Install MySQL 8.0 package with yum:
+
+```
+
+sudo yum install mysql-community-server
+
+```
+
+
+Starting MySQL
+
+```
+sudo systemctl start mysqld
+
+```
+
+
+
+During the installation process, a temporary password is generated for the MySQL root user. Locate it in the mysqld.log with this command
+
+```
+sudo grep 'temporary password' /var/log/mysqld.log
+
+```
+
+
+I got this
+
+
+```
+2021-01-02T23:07:27.740244Z 6 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: WH-YNg7iSU9y
+```
+
+
+
+Configuring MySQL
+Run the security script:
+
+```
+sudo mysql_secure_installation
+
+```
+
+I got
+
+```
+[sudo] password for kplee:
+
+```
+
+I entered the root password
+
+got this
+
+```
+Securing the MySQL server deployment.
+
+Enter password for user root:
+```
+I entered the temporarely code
+
+got this
+
+```
+
+The existing password for the user account root has expired. Please set a new password.
+
+New password:
+
+```
+
+> Note: Enter a new 12-character password that contains at least one uppercase letter, one lowercase letter, one number and one special character. Re-enter it when prompted.
+
+
+Got this
+
+```
+The 'validate_password' component is installed on the server.
+The subsequent steps will run with the existing configuration
+of the component.
+Using existing password for root.
+
+Estimated strength of the password: 100
+Change the password for root ? ((Press y|Y for Yes, any other key for No) : *No*
+
+ ... skipping.
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them. This is intended only for
+testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production
+environment.
+
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : *Yes*
+Success.
+
+
+Normally, root should only be allowed to connect from
+'localhost'. This ensures that someone cannot guess at
+the root password from the network.
+
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : *Yes*
+Success.
+
+By default, MySQL comes with a database named 'test' that
+anyone can access. This is also intended only for testing,
+and should be removed before moving into a production
+environment.
+
+
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : *Yes*
+ - Dropping test database...
+Success.
+
+ - Removing privileges on test database...
+Success.
+
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : *Yes*
+Success.
+
+All done!
+
+
+```

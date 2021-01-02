@@ -1332,8 +1332,6 @@ unzip SNAP-master
 
 make
 
-./hmm-assembler.pl #create hmm profile
-
 ./snap [options] <HMM file> <FASTA file> [options] # run SNAP
 
 ```

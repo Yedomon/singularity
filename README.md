@@ -1770,3 +1770,179 @@ Now check that it works:
 perl -MDBD::mysql -e 'print "Hello there!";'
 
 ```
+
+
+Install perl-DB_File
+
+```
+sudo yum install perl-DB_File   # [source](https://metacpan.org/pod/distribution/DBD-mysql/lib/DBD/mysql/INSTALL.pod)
+
+```
+
+setting up mysql for pasa use
+
+I will do later
+
+
+Intsall Tom Wu's GMAP cdna alignment utility.
+
+
+
+```
+$ wget http://research-pub.gene.com/gmap/src/gmap-gsnap-2020-12-17.tar.gz
+$ tar zxvf gmap-gsnap-2020-12-17.tar.gz
+$ cd gmap-2020-12-17
+$ ./configure --prefix=$pwd
+$ make -j 8
+$ sudo make install
+
+```
+
+Install Jim Kent's BLAT aligner
+
+
+```
+
+$ sudo yum install libpng-devel
+$ wget http://hgwdev.cse.ucsc.edu/~kent/src/blatSrc35.zip
+$ unzip blatSrc35.zip
+$ cd blatSrc
+$ MACHTYPE=x86_64-redhat-linux-gnu          
+$ export MACHTYPE
+$ mkdir -p ~/bin/x86_64-redhat-linux-gnu   
+$ make 
+
+
+
+
+fail so I used this from this [post](https://www.biostars.org/p/291102/) 
+
+
+$ echo $MACHTYPE
+x86_64-pc-linux-gnu
+$ MACHTYPE=x86_64
+$ export MACHTYPE
+$ echo $MACHTYPE 
+x86_64
+$ export PATH=~/bin/x86_64::$PATH
+$ make
+
+I refreshed the PATH variable with source ~/.bashrc and then I ran
+
+blat
+
+```
+
+Install Bill Pearson's FASTA general sequence alignment utility
+
+
+
+```
+
+$ wget https://faculty.virginia.edu/wrpearson/fasta/fasta3/fasta-36.3.8h.tar.gz
+$ tar zxvf fasta-36.3.8h.tar.gz
+$ cd fasta-36.3.8h
+$ cd src
+$ make -f ../make/Makefile.linux_sse2 all
+$ cd ..
+$ ln -s $PWD/bin/fasta36 ~/bin/fasta
+
+
+
+
+```
+
+
+
+Install pasa
+
+
+
+
+```
+
+$ wget https://github.com/PASApipeline/PASApipeline/releases/download/pasa-v2.4.1/PASApipeline.v2.4.1.FULL.tar.gz
+$ tar zxvf PASApipeline.v2.4.1.FULL.tar.gz
+$ make
+
+```
+
+MySQL configuration
+
+$ mysql -u root -p
+
+# create a 'pasa_write' user destined for reading/writing/creating capabilities
+mysql> create user 'pasa_write'@'localhost' identified by 'pasa_write_pwd';
+> mysql> CREATE USER 'kplee'@'localhost' IDENTIFIED BY 'kpleeSESAME2_270190'; #I used this
+
+
+# this below will allow user 'pasa_write' to create databases named with a _pasa suffix 
+ # (and so not just any database name)
+ 
+ 
+mysql> grant all privileges on `%_pasa`.* to 'pasa_write'@'localhost';
+> mysql> GRANT ALL PRIVILEGES ON `%_pasa`.* TO 'kplee'@'localhost'; # I used this
+
+
+
+# create a 'pasa_access' user that we'll use for read-only database access.
+ # this is useful for generating reports, pasa-web access, etc., where read-only is best.
+ 
+> mysql> CREATE USER 'pasa'@'localhost' IDENTIFIED BY 'kpleeSESAME_270190';
+
+
+
+[tuto](https://linuxize.com/post/how-to-create-mysql-user-accounts-and-grant-privileges/#:~:text=To%20create%20a%20new%20MySQL,user_password%20with%20the%20user%20password.)
+
+# set config file
+
+```
+cd /home/kplee/program/PASApipeline.v2.4.1/pasa_conf
+
+cp pasa.CONFIG.template conf.txt
+
+vi conf.txt
+
+```
+
+
+
+Do that
+
+```
+
+#####################################
+#### MANDATORY SETTINGS #############
+#####################################
+
+# This file is not used if SQLITEDB is set in the alignment assembly configuration file
+## MySQL settings:
+
+# server actively running MySQL
+# MYSQLSERVER=server.com
+MYSQLSERVER=localhost
+# Pass socket connections through Perl DBI syntax e.g. MYSQLSERVER=mysql_socket=/tmp/mysql.sock
+
+# read-write username and password
+MYSQL_RW_USER=myid
+MYSQL_RW_PASSWORD=mypassword
+
+#### END OF MANDATORY SETTINGS ######
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

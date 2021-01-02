@@ -1898,6 +1898,37 @@ mysql -u root -p
 > mysql> CREATE DATABASE my_db_pasa;
 
 
+check available databases 
+
+```
+SHOW DATABASES;
+
+```
+
+
+I got
+
+
+```
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| my_db_pasa         |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+
+```
+
+
+so I think I can set the alignment config file with `mysql`
+
+
+
 
 [tuto create database](https://linuxize.com/post/how-to-create-a-mysql-database/)
 

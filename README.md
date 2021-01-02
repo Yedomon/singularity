@@ -1882,7 +1882,7 @@ mysql> create user 'pasa_write'@'localhost' identified by 'pasa_write_pwd';
  
 mysql> grant all privileges on `%_pasa`.* to 'pasa_write'@'localhost';
 > mysql> GRANT ALL PRIVILEGES ON `%_pasa`.* TO 'kplee'@'localhost'; # I used this
-
+> mysql> GRANT ALL PRIVILEGES ON *.* TO 'kplee'@'localhost'; # I change later
 
 
 # create a 'pasa_access' user that we'll use for read-only database access.
